@@ -5,10 +5,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
     # text input
     # ----------------------------------------
     $builderProvider.registerComponent 'textInput',
-        group: 'Default'
-        label: 'Text Input'
-        description: 'description'
-        placeholder: 'placeholder'
+        group: '基础控件'
+        label: '单行文本'
+        description: '描述信息'
+        placeholder: '占位符'
         required: no
         validationOptions: [
             {label: 'none', rule: '/.*/'}
@@ -30,21 +30,21 @@ angular.module 'builder.components', ['builder', 'validator.rules']
             """
             <form>
                 <div class="form-group">
-                    <label class='control-label'>Label</label>
+                    <label class='control-label'>控件标题</label>
                     <input type='text' ng-model="label" validator="[required]" class='form-control'/>
                 </div>
                 <div class="form-group">
-                    <label class='control-label'>Description</label>
+                    <label class='control-label'>描述信息</label>
                     <input type='text' ng-model="description" class='form-control'/>
                 </div>
                 <div class="form-group">
-                    <label class='control-label'>Placeholder</label>
+                    <label class='control-label'>占位符</label>
                     <input type='text' ng-model="placeholder" class='form-control'/>
                 </div>
                 <div class="checkbox">
                     <label>
                         <input type='checkbox' ng-model="required" />
-                        Required</label>
+                        必填项</label>
                 </div>
                 <div class="form-group" ng-if="validationOptions.length > 0">
                     <label class='control-label'>Validation</label>
@@ -53,9 +53,17 @@ angular.module 'builder.components', ['builder', 'validator.rules']
 
                 <hr/>
                 <div class='form-group'>
-                    <input type='submit' ng-click="popover.save($event)" class='btn btn-primary' value='Save'/>
-                    <input type='button' ng-click="popover.cancel($event)" class='btn btn-default' value='Cancel'/>
-                    <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='Delete'/>
+                    <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                          <input type='submit' ng-click="popover.save($event)" class='btn btn-success' value='保存'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='删除'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.cancel($event)" class='btn btn-primary' value='取消'/>
+                      </div>
+                    </div>
                 </div>
             </form>
             """
@@ -64,10 +72,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
     # Text area
     # ----------------------------------------
     $builderProvider.registerComponent 'textArea',
-        group: 'Default'
-        label: 'Text Area'
-        description: 'description'
-        placeholder: 'placeholder'
+        group: '基础控件'
+        label: '多行文本'
+        description: '描述信息'
+        placeholder: '占位符'
         required: no
         template:
             """
@@ -83,28 +91,36 @@ angular.module 'builder.components', ['builder', 'validator.rules']
             """
             <form>
                 <div class="form-group">
-                    <label class='control-label'>Label</label>
+                    <label class='control-label'>控件标题</label>
                     <input type='text' ng-model="label" validator="[required]" class='form-control'/>
                 </div>
                 <div class="form-group">
-                    <label class='control-label'>Description</label>
+                    <label class='control-label'>描述信息</label>
                     <input type='text' ng-model="description" class='form-control'/>
                 </div>
                 <div class="form-group">
-                    <label class='control-label'>Placeholder</label>
+                    <label class='control-label'>占位符</label>
                     <input type='text' ng-model="placeholder" class='form-control'/>
                 </div>
                 <div class="checkbox">
                     <label>
                         <input type='checkbox' ng-model="required" />
-                        Required</label>
+                        必填项</label>
                 </div>
 
                 <hr/>
                 <div class='form-group'>
-                    <input type='submit' ng-click="popover.save($event)" class='btn btn-primary' value='Save'/>
-                    <input type='button' ng-click="popover.cancel($event)" class='btn btn-default' value='Cancel'/>
-                    <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='Delete'/>
+                    <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                          <input type='submit' ng-click="popover.save($event)" class='btn btn-success' value='保存'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='删除'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.cancel($event)" class='btn btn-primary' value='取消'/>
+                      </div>
+                    </div>
                 </div>
             </form>
             """
@@ -113,10 +129,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
     # checkbox
     # ----------------------------------------
     $builderProvider.registerComponent 'checkbox',
-        group: 'Default'
-        label: 'Checkbox'
-        description: 'description'
-        placeholder: 'placeholder'
+        group: '基础控件'
+        label: '多项选择'
+        description: '描述信息'
+        placeholder: '占位符'
         required: no
         options: ['value one', 'value two']
         arrayToText: yes
@@ -139,29 +155,37 @@ angular.module 'builder.components', ['builder', 'validator.rules']
             """
             <form>
                 <div class="form-group">
-                    <label class='control-label'>Label</label>
+                    <label class='control-label'>控件标题</label>
                     <input type='text' ng-model="label" validator="[required]" class='form-control'/>
                 </div>
                 <div class="form-group">
-                    <label class='control-label'>Description</label>
+                    <label class='control-label'>描述信息</label>
                     <input type='text' ng-model="description" class='form-control'/>
                 </div>
                 <div class="form-group">
-                    <label class='control-label'>Options</label>
+                    <label class='control-label'>可选项</label>
                     <textarea class="form-control" rows="3" ng-model="optionsText"/>
                 </div>
                 <div class="checkbox">
                     <label>
                         <input type='checkbox' ng-model="required" />
-                        Required
+                        必填项
                     </label>
                 </div>
 
                 <hr/>
                 <div class='form-group'>
-                    <input type='submit' ng-click="popover.save($event)" class='btn btn-primary' value='Save'/>
-                    <input type='button' ng-click="popover.cancel($event)" class='btn btn-default' value='Cancel'/>
-                    <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='Delete'/>
+                    <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                          <input type='submit' ng-click="popover.save($event)" class='btn btn-success' value='保存'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='删除'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.cancel($event)" class='btn btn-primary' value='取消'/>
+                      </div>
+                    </div>
                 </div>
             </form>
             """
@@ -170,10 +194,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
     # radio
     # ----------------------------------------
     $builderProvider.registerComponent 'radio',
-        group: 'Default'
-        label: 'Radio'
-        description: 'description'
-        placeholder: 'placeholder'
+        group: '基础控件'
+        label: '单项选择'
+        description: '描述信息'
+        placeholder: '占位符'
         required: no
         options: ['value one', 'value two']
         template:
@@ -194,23 +218,31 @@ angular.module 'builder.components', ['builder', 'validator.rules']
             """
             <form>
                 <div class="form-group">
-                    <label class='control-label'>Label</label>
+                    <label class='control-label'>控件标题</label>
                     <input type='text' ng-model="label" validator="[required]" class='form-control'/>
                 </div>
                 <div class="form-group">
-                    <label class='control-label'>Description</label>
+                    <label class='control-label'>描述信息</label>
                     <input type='text' ng-model="description" class='form-control'/>
                 </div>
                 <div class="form-group">
-                    <label class='control-label'>Options</label>
+                    <label class='control-label'>可选项</label>
                     <textarea class="form-control" rows="3" ng-model="optionsText"/>
                 </div>
 
                 <hr/>
                 <div class='form-group'>
-                    <input type='submit' ng-click="popover.save($event)" class='btn btn-primary' value='Save'/>
-                    <input type='button' ng-click="popover.cancel($event)" class='btn btn-default' value='Cancel'/>
-                    <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='Delete'/>
+                    <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                          <input type='submit' ng-click="popover.save($event)" class='btn btn-success' value='保存'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='删除'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.cancel($event)" class='btn btn-primary' value='取消'/>
+                      </div>
+                    </div>
                 </div>
             </form>
             """
@@ -219,10 +251,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
     # select
     # ----------------------------------------
     $builderProvider.registerComponent 'select',
-        group: 'Default'
-        label: 'Select'
-        description: 'description'
-        placeholder: 'placeholder'
+        group: '基础控件'
+        label: '下拉选择'
+        description: '描述信息'
+        placeholder: '占位符'
         required: no
         options: ['value one', 'value two']
         template:
@@ -240,23 +272,31 @@ angular.module 'builder.components', ['builder', 'validator.rules']
             """
             <form>
                 <div class="form-group">
-                    <label class='control-label'>Label</label>
+                    <label class='control-label'>控件标题</label>
                     <input type='text' ng-model="label" validator="[required]" class='form-control'/>
                 </div>
                 <div class="form-group">
-                    <label class='control-label'>Description</label>
+                    <label class='control-label'>描述信息</label>
                     <input type='text' ng-model="description" class='form-control'/>
                 </div>
                 <div class="form-group">
-                    <label class='control-label'>Options</label>
+                    <label class='control-label'>可选项</label>
                     <textarea class="form-control" rows="3" ng-model="optionsText"/>
                 </div>
 
                 <hr/>
                 <div class='form-group'>
-                    <input type='submit' ng-click="popover.save($event)" class='btn btn-primary' value='Save'/>
-                    <input type='button' ng-click="popover.cancel($event)" class='btn btn-default' value='Cancel'/>
-                    <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='Delete'/>
+                    <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                          <input type='submit' ng-click="popover.save($event)" class='btn btn-success' value='保存'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='删除'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.cancel($event)" class='btn btn-primary' value='取消'/>
+                      </div>
+                    </div>
                 </div>
             </form>
             """
