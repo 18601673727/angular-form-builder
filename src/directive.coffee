@@ -295,7 +295,7 @@ angular.module 'builder.directive', [
             object:
                 componentName: scope.component.name
 
-        scope.$watch 'component.template', (template) ->
+        scope.$watch 'component.handleTemplate', (template) ->
             return if not template
             view = $compile(template) scope
             $(element).html view

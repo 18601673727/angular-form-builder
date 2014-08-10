@@ -16,6 +16,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
             {label: 'email', rule: '[email]'}
             {label: 'url', rule: '[url]'}
         ]
+        handleTemplate:
+          """
+          <label class='fb-outline'>{{label}}</label>
+          """
         template:
             """
             <div class="form-group">
@@ -77,6 +81,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
         description: '描述信息'
         placeholder: '占位符'
         required: no
+        handleTemplate:
+          """
+          <label class='fb-outline'>{{label}}</label>
+          """
         template:
             """
             <div class="form-group">
@@ -136,6 +144,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
         required: no
         options: ['value one', 'value two']
         arrayToText: yes
+        handleTemplate:
+          """
+          <label class='fb-outline'>{{label}}</label>
+          """
         template:
             """
             <div class="form-group">
@@ -200,6 +212,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
         placeholder: '占位符'
         required: no
         options: ['value one', 'value two']
+        handleTemplate:
+          """
+          <label class='fb-outline'>{{label}}</label>
+          """
         template:
             """
             <div class="form-group">
@@ -257,6 +273,10 @@ angular.module 'builder.components', ['builder', 'validator.rules']
         placeholder: '占位符'
         required: no
         options: ['value one', 'value two']
+        handleTemplate:
+          """
+          <label class='fb-outline'>{{label}}</label>
+          """
         template:
             """
             <div class="form-group">

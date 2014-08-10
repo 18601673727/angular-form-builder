@@ -50,6 +50,7 @@ angular.module 'builder.provider', []
             validationOptions: component.validationOptions ? []
             options: component.options ? []
             arrayToText: component.arrayToText ? no
+            handleTemplate: component.handleTemplate
             template: component.template
             templateUrl: component.templateUrl
             popoverTemplate: component.popoverTemplate
