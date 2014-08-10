@@ -143,6 +143,18 @@ angular.module 'builder.controller', ['builder.provider']
         Copy current scope.input[X] to $parent.input.
         @param value: The input value.
         ###
+        if typeof value isnt 'undefined' and $scope.formObject.id is 'checkbox'
+            newValue = []
+
+            for option in $scope.formObject.options
+                if value.indexOf(', ') > -1
+                    for val in value.split ', '
+                        if val is option then newValue.push true
+                else
+                    newValue.push value == option
+
+            value = newValue
+
         input =
             id: $scope.formObject.id
             label: $scope.formObject.label
