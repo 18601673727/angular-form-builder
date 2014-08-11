@@ -23,7 +23,7 @@ angular.module 'builder.directive', [
         fbBuilder: '='
     template:
         """
-        <div class='form-horizontal'>
+        <div role='form'>
             <div class='fb-form-object-editable' ng-repeat="object in formObjects"
                 fb-form-object-editable="object"></div>
         </div>
@@ -266,7 +266,7 @@ angular.module 'builder.directive', [
                 <a href='#' ng-click="selectGroup($event, group)">{{group}}</a>
             </li>
         </ul>
-        <div class='form-horizontal'>
+        <div role='form'>
             <div class='fb-component' ng-repeat="component in components"
                 fb-component="component"></div>
         </div>

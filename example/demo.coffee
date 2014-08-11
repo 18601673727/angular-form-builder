@@ -13,6 +13,10 @@ angular.module 'app', ['builder', 'builder.components', 'validator.rules']
             {label: 'email', rule: '[email]'}
             {label: 'url', rule: '[url]'}
         ]
+        handleTemplate:
+            """
+            <label class='fb-outline'>{{label}}</label>
+            """
         templateUrl: 'example/template.html'
         popoverTemplateUrl: 'example/popoverTemplate.html'
 
@@ -24,6 +28,10 @@ angular.module 'app', ['builder', 'builder.components', 'validator.rules']
         label: 'Name'
         required: no
         arrayToText: yes
+        handleTemplate:
+            """
+            <label class='fb-outline'>{{label}}</label>
+            """
         template:
             """
             <div class="form-group">
