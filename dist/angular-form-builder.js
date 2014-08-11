@@ -1206,6 +1206,19 @@
         return _this.reindexFormObject(name);
       };
     })(this);
+    this.clearFormObject = (function(_this) {
+      return function(name) {
+
+        /*
+        Remove all the form object.
+        @param name: The form name.
+         */
+        var formObjects;
+        formObjects = _this.forms[name];
+        formObjects.splice(0);
+        return _this.reindexFormObject(name);
+      };
+    })(this);
     this.updateFormObjectIndex = (function(_this) {
       return function(name, oldIndex, newIndex) {
 
@@ -1245,6 +1258,7 @@
             addFormObject: _this.addFormObject,
             insertFormObject: _this.insertFormObject,
             removeFormObject: _this.removeFormObject,
+            clearFormObject: _this.clearFormObject,
             updateFormObjectIndex: _this.updateFormObjectIndex
           };
         };

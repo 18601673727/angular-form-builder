@@ -180,6 +180,15 @@ angular.module 'builder.provider', []
         formObjects.splice index, 1
         @reindexFormObject name
 
+    @clearFormObject = (name) =>
+        ###
+        Remove all the form object.
+        @param name: The form name.
+        ###
+        formObjects = @forms[name]
+        formObjects.splice 0
+        @reindexFormObject name
+
     @updateFormObjectIndex = (name, oldIndex, newIndex) =>
         ###
         Update the index of the form object.
@@ -210,6 +219,7 @@ angular.module 'builder.provider', []
         addFormObject: @addFormObject
         insertFormObject: @insertFormObject
         removeFormObject: @removeFormObject
+        clearFormObject: @clearFormObject
         updateFormObjectIndex: @updateFormObjectIndex
     ]
     return
