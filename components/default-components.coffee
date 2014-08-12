@@ -49,7 +49,7 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                         必填项</label>
                 </div>
                 <div class="form-group" ng-if="validationOptions.length > 0">
-                    <label class='control-label'>Validation</label>
+                    <label class='control-label'>验证策略</label>
                     <select ng-model="$parent.validation" class='form-control' ng-options="option.rule as option.label for option in validationOptions"></select>
                 </div>
 
@@ -292,6 +292,53 @@ angular.module 'builder.components', ['builder', 'validator.rules']
                 <div class="form-group">
                     <label class='control-label'>可选项</label>
                     <textarea class="form-control" rows="3" ng-model="optionsText"/>
+                </div>
+
+                <hr/>
+                <div class='form-group'>
+                    <div class="btn-group btn-group-justified">
+                      <div class="btn-group">
+                          <input type='submit' ng-click="popover.save($event)" class='btn btn-success' value='保存'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.remove($event)" class='btn btn-danger' value='删除'/>
+                      </div>
+                      <div class="btn-group">
+                          <input type='button' ng-click="popover.cancel($event)" class='btn btn-primary' value='取消'/>
+                      </div>
+                    </div>
+                </div>
+            </form>
+            """
+
+    # ----------------------------------------
+    # legend
+    # ----------------------------------------
+    $builderProvider.registerComponent 'legend',
+        group: '基础控件'
+        label: '分隔符'
+        description: '描述信息'
+        handleTemplate:
+          """
+          <label class='fb-outline'>{{label}}</label>
+          """
+        template:
+            """
+            <div class="form-group">
+                <legend><label for="{{formName+index}}">{{label}}</label></legend>
+                <p class='help-block'>{{description}}</p>
+            </div>
+            """
+        popoverTemplate:
+            """
+            <form>
+                <div class="form-group">
+                    <label class='control-label'>控件标题</label>
+                    <input type='text' ng-model="label" validator="[required]" class='form-control'/>
+                </div>
+                <div class="form-group">
+                    <label class='control-label'>描述信息</label>
+                    <input type='text' ng-model="description" class='form-control'/>
                 </div>
 
                 <hr/>
