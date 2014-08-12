@@ -166,7 +166,7 @@ angular.module 'builder.directive', [
                 html: yes
                 title: scope.$component.label
                 content: popover.view
-                container: 'body'
+                container: '.fb-builder'
                 placement: $builder.config.popoverPlacement
         scope.popover =
             save: ($event) ->
