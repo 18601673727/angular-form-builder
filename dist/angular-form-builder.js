@@ -1,5 +1,6 @@
 (function() {
-  var copyObjectToScope;
+  var copyObjectToScope,
+    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
 
   copyObjectToScope = function(object, scope) {
 
@@ -155,25 +156,22 @@
         Copy current scope.input[X] to $parent.input.
         @param value: The input value.
          */
-        var input, newValue, option, val, _i, _j, _len, _len1, _ref, _ref1;
-        if (typeof value !== 'undefined' && $scope.formObject.id === 'checkbox') {
-          newValue = [];
-          _ref = $scope.formObject.options;
+        var input, newValues, option, values, _i, _len, _ref;
+        if (typeof value !== 'undefined' && $scope.component === 'checkbox') {
+
+          /*
+          When user click on checkboxes,
+          Directly split the value string into array by comma,
+          Then push boolean results to that array.
+           */
+          values = value.split(', ');
+          newValues = [];
+          _ref = $scope.options;
           for (_i = 0, _len = _ref.length; _i < _len; _i++) {
             option = _ref[_i];
-            if (value.indexOf(', ') > -1) {
-              _ref1 = value.split(', ');
-              for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
-                val = _ref1[_j];
-                if (val === option) {
-                  newValue.push(true);
-                }
-              }
-            } else {
-              newValue.push(value === option);
-            }
+            newValues.push(__indexOf.call(values, option) >= 0);
           }
-          value = newValue;
+          value = newValues;
         }
         input = {
           id: $scope.formObject.id,
@@ -340,7 +338,7 @@
               html: true,
               title: scope.$component.label,
               content: popover.view,
-              container: 'body',
+              container: '.fb-builder',
               placement: $builder.config.popoverPlacement
             });
           });
