@@ -95,7 +95,7 @@ angular.module 'app', ['builder', 'builder.components', 'validator.rules']
         component: 'checkbox'
         label: 'Pets'
         description: 'Do you have any pets?'
-        options: ['Dog', 'Cat']
+        options: ['Dog', 'Cat', 'Tiger']
     $builder.addFormObject 'default',
         component: 'sampleInput'
     # formObjects
@@ -109,7 +109,7 @@ angular.module 'app', ['builder', 'builder.components', 'validator.rules']
     $scope.defaultValue = {}
     # formObjectId: default value
     $scope.defaultValue[textbox.id] = 'default value'
-    $scope.defaultValue[checkbox.id] = [yes, yes]
+    $scope.defaultValue[checkbox.id] = [yes, yes, no]
 
     $scope.submit = ->
         $validator.validate $scope, 'default'

@@ -53,7 +53,7 @@
         component: 'checkbox',
         label: 'Pets',
         description: 'Do you have any pets?',
-        options: ['Dog', 'Cat']
+        options: ['Dog', 'Cat', 'Tiger']
       });
       $builder.addFormObject('default', {
         component: 'sampleInput'
@@ -62,7 +62,7 @@
       $scope.input = [];
       $scope.defaultValue = {};
       $scope.defaultValue[textbox.id] = 'default value';
-      $scope.defaultValue[checkbox.id] = [true, true];
+      $scope.defaultValue[checkbox.id] = [true, true, false];
       return $scope.submit = function() {
         return $validator.validate($scope, 'default').success(function() {
           return console.log('success');

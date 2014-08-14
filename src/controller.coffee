@@ -143,17 +143,19 @@ angular.module 'builder.controller', ['builder.provider']
         Copy current scope.input[X] to $parent.input.
         @param value: The input value.
         ###
-        if typeof value isnt 'undefined' and $scope.formObject.id is 'checkbox'
-            newValue = []
+        if typeof value isnt 'undefined' and $scope.component is 'checkbox'
+            ###
+            When user click on checkboxes,
+            Directly split the value string into array by comma,
+            Then push boolean results to that array.
+            ###
+            values = value.split ', '
+            newValues = []
 
-            for option in $scope.formObject.options
-                if value.indexOf(', ') > -1
-                    for val in value.split ', '
-                        if val is option then newValue.push true
-                else
-                    newValue.push value == option
+            for option in $scope.options
+                newValues.push option in values
 
-            value = newValue
+            value = newValues
 
         input =
             id: $scope.formObject.id
