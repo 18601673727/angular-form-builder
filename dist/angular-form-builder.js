@@ -1,6 +1,5 @@
 (function() {
-  var copyObjectToScope,
-    __indexOf = [].indexOf || function(item) { for (var i = 0, l = this.length; i < l; i++) { if (i in this && this[i] === item) return i; } return -1; };
+  var copyObjectToScope;
 
   copyObjectToScope = function(object, scope) {
 
@@ -156,23 +155,7 @@
         Copy current scope.input[X] to $parent.input.
         @param value: The input value.
          */
-        var input, newValues, option, values, _i, _len, _ref;
-        if (typeof value !== 'undefined' && $scope.component === 'checkbox') {
-
-          /*
-          When user click on checkboxes,
-          Directly split the value string into array by comma,
-          Then push boolean results to that array.
-           */
-          values = value.split(', ');
-          newValues = [];
-          _ref = $scope.options;
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            option = _ref[_i];
-            newValues.push(__indexOf.call(values, option) >= 0);
-          }
-          value = newValues;
-        }
+        var input;
         input = {
           id: $scope.formObject.id,
           label: $scope.formObject.label,
