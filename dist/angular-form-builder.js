@@ -237,6 +237,9 @@
               beginMove = true;
               if (!$drag.isMouseMoved()) {
                 $(element).find('.empty').remove();
+                $builder.insertFormObject(scope.formName, $(element).find('.empty').index('.fb-form-object-editable'), {
+                  component: draggable.object.componentName
+                });
                 return;
               }
               if (!isHover && draggable.mode === 'drag') {
@@ -288,6 +291,7 @@
             if (!template) {
               return;
             }
+            template = "<div class=\"fb-toolbox\">\n  <a ng-click=\"popover.remove($event)\">\n    <span class=\"glyphicon glyphicon-remove\"></span>\n  </a>\n</div>" + template;
             view = $compile(template)(scope);
             return $(element).html(view);
           });
@@ -418,7 +422,7 @@
   ]).directive('fbComponents', function() {
     return {
       restrict: 'A',
-      template: "<ul ng-if=\"groups.length > 1\" class=\"nav nav-tabs nav-justified\">\n    <li ng-repeat=\"group in groups\" ng-class=\"{active:activeGroup==group}\">\n        <a href='#' ng-click=\"selectGroup($event, group)\">{{group}}</a>\n    </li>\n</ul>\n<div role='form'>\n    <div class='fb-component' ng-repeat=\"component in components\"\n        fb-component=\"component\"></div>\n</div>",
+      template: "<ul ng-if=\"groups.length > 1\" class=\"nav nav-tabs nav-outline\">\n    <li ng-repeat=\"group in groups\" ng-class=\"{active:activeGroup==group}\">\n        <a href='#' ng-click=\"selectGroup($event, group)\">{{group}}</a>\n    </li>\n</ul>\n<div class=\"fb-components\" role='form'>\n    <div class='fb-component' ng-repeat=\"component in components\"\n        fb-component=\"component\"></div>\n</div>",
       controller: 'fbComponentsController'
     };
   }).directive('fbComponent', [

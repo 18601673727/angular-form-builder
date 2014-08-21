@@ -4,7 +4,7 @@
 
 .fb-component {
     display: inline-block;
-    margin: 20px 10px;
+    margin: 0 13px;
     overflow: hidden;
     border-radius: 8px;
 
@@ -13,6 +13,27 @@
     label { cursor: move; }
     select { cursor: move; }
     textarea { cursor: move; }
+}
+.fb-components {
+    padding: 10px 0;
+    border: 1px solid #3B99FC;
+    border-top: none;
+}
+.nav-outline {
+    border-bottom: 1px solid #3B99FC;
+}
+.nav-tabs.nav-outline>.active>a, .nav-tabs.nav-outline>.active>a:hover, .nav-tabs.nav-outline>.active>a:focus {
+    border: 1px solid #3B99FC;
+}
+.nav-tabs.nav-outline>.active>a, .nav-tabs.nav-outline>.active>a:hover, .nav-tabs.nav-outline>.active>a:focus {
+    border-bottom-color: #fff;
+}
+.nav-tabs.nav-outline>li.active>a, .nav-tabs.nav-outline>li.active>a:hover, .nav-tabs.nav-outline>li.active>a:focus {
+    color: #3B99FC;
+}
+.nav-tabs.nav-justified>li>a {
+    border-bottom: 1px solid lighten(#3B99FC, 20%);
+    border-radius: 4px 4px 0 0;
 }
 .fb-outline {
     color: #3B99FC;
@@ -24,12 +45,35 @@
     text-align: center;
     min-width: 83px;
     display: inline-block;
+
+    &:hover {
+      color: darken(#3B99FC, 25%);
+      border: 1px solid darken(#3B99FC, 25%);
+    }
+}
+.fb-toolbox {
+    text-align: right;
+
+    a {
+      color: transparent;
+    }
 }
 .fb-form-object-editable {
     padding: 10px;
+
+    &:hover {
+      .fb-toolbox a {
+        color: #3B99FC;
+      }
+    }
 }
 .fb-form-object-editable.fb-draggable {
     cursor: move;
+
+    &:hover {
+      background-color: darken(#fff, 2%);
+    }
+
     input { cursor: move; }
     label { cursor: pointer; }
     select { cursor: move; }

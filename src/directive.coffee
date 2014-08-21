@@ -87,6 +87,10 @@ angular.module 'builder.directive', [
                 if not $drag.isMouseMoved()
                     # click event
                     $(element).find('.empty').remove()
+                    # also insert a form object
+                    $builder.insertFormObject scope.formName, $(element).find('.empty').index('.fb-form-object-editable'),
+                        component: draggable.object.componentName
+
                     return
 
                 if not isHover and draggable.mode is 'drag'
@@ -132,6 +136,14 @@ angular.module 'builder.directive', [
         # compile formObject
         scope.$watch '$component.template', (template) ->
             return if not template
+            template =
+              """
+              <div class="fb-toolbox">
+                <a ng-click="popover.remove($event)">
+                  <span class="glyphicon glyphicon-remove"></span>
+                </a>
+              </div>
+              """ + template;
             view = $compile(template) scope
             $(element).html view
 
@@ -261,12 +273,12 @@ angular.module 'builder.directive', [
     restrict: 'A'
     template:
         """
-        <ul ng-if="groups.length > 1" class="nav nav-tabs nav-justified">
+        <ul ng-if="groups.length > 1" class="nav nav-tabs nav-outline">
             <li ng-repeat="group in groups" ng-class="{active:activeGroup==group}">
                 <a href='#' ng-click="selectGroup($event, group)">{{group}}</a>
             </li>
         </ul>
-        <div role='form'>
+        <div class="fb-components" role='form'>
             <div class='fb-component' ng-repeat="component in components"
                 fb-component="component"></div>
         </div>
