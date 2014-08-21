@@ -88,8 +88,9 @@ angular.module 'builder.directive', [
                     # click event
                     $(element).find('.empty').remove()
                     # also insert a form object
-                    $builder.insertFormObject scope.formName, $(element).find('.empty').index('.fb-form-object-editable'),
-                        component: draggable.object.componentName
+                    if draggable.mode is 'mirror'
+                        $builder.insertFormObject scope.formName, $(element).find('.empty').index('.fb-form-object-editable'),
+                            component: draggable.object.componentName
 
                     return
 

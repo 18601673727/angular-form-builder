@@ -237,9 +237,11 @@
               beginMove = true;
               if (!$drag.isMouseMoved()) {
                 $(element).find('.empty').remove();
-                $builder.insertFormObject(scope.formName, $(element).find('.empty').index('.fb-form-object-editable'), {
-                  component: draggable.object.componentName
-                });
+                if (draggable.mode === 'mirror') {
+                  $builder.insertFormObject(scope.formName, $(element).find('.empty').index('.fb-form-object-editable'), {
+                    component: draggable.object.componentName
+                  });
+                }
                 return;
               }
               if (!isHover && draggable.mode === 'drag') {
