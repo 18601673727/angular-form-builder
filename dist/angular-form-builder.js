@@ -238,7 +238,7 @@
               if (!$drag.isMouseMoved()) {
                 $(element).find('.empty').remove();
                 if (draggable.mode === 'mirror') {
-                  $builder.insertFormObject(scope.formName, $(element).find('.empty').index('.fb-form-object-editable'), {
+                  $builder.addFormObject(scope.formName, {
                     component: draggable.object.componentName
                   });
                 }
@@ -424,7 +424,7 @@
   ]).directive('fbComponents', function() {
     return {
       restrict: 'A',
-      template: "<ul ng-if=\"groups.length > 1\" class=\"nav nav-tabs nav-outline\">\n    <li ng-repeat=\"group in groups\" ng-class=\"{active:activeGroup==group}\">\n        <a href='#' ng-click=\"selectGroup($event, group)\">{{group}}</a>\n    </li>\n</ul>\n<div class=\"fb-components\" role='form'>\n    <div class='fb-component' ng-repeat=\"component in components\"\n        fb-component=\"component\"></div>\n</div>",
+      template: "<div ng-if=\"groups.length > 1\" class=\"panel-group\" id=\"accordion\">\n  <div ng-repeat=\"group in groups track by $index\" class=\"panel panel-default\">\n    <div class=\"panel-heading\">\n      <h4 class=\"panel-title\">\n        <a ng-click=\"selectGroup($event, group)\" data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse{{$index}}\">\n          {{group}}\n        </a>\n      </h4>\n    </div>\n    <div id=\"collapse{{$index}}\" class=\"fb-components panel-collapse collapse\" ng-class=\"{in: !$index}\">\n      <div class=\"panel-body\">\n        <div class='fb-component' ng-repeat=\"component in components\" fb-component=\"component\"></div>\n      </div>\n    </div>\n  </div>\n</div>",
       controller: 'fbComponentsController'
     };
   }).directive('fbComponent', [
@@ -733,7 +733,7 @@
           e.preventDefault();
           $clone = $element.clone();
           result.element = $clone[0];
-          $clone.addClass("fb-draggable form-horizontal prepare-dragging");
+          $clone.addClass("fb-draggable prepare-dragging");
           _this.hooks.move.drag = function(e, defer) {
             var droppable, id, _ref, _results;
             if ($clone.hasClass('prepare-dragging')) {
@@ -935,6 +935,7 @@
             out: The custom mouse out callback. (e, draggable)->
          */
         result = [];
+        _this.data.droppables = {};
         for (_i = 0, _len = $element.length; _i < _len; _i++) {
           element = $element[_i];
           droppable = _this.dropMode($(element), options);
