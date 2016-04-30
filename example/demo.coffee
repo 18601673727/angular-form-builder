@@ -34,9 +34,9 @@ angular.module 'app', ['builder', 'builder.components', 'validator.rules']
             """
         template:
             """
-            <div class="form-group">
+            <div class="form-group clearfix">
                 <label for="{{formName+index}}" class="col-md-4 control-label" ng-class="{'fb-required':required}">{{label}}</label>
-                <div class="col-md-8">
+                <div class="col-md-8 clearfix">
                     <input type='hidden' ng-model="inputText" validator-required="{{required}}" validator-group="{{formName}}"/>
                     <div class="col-sm-6" style="padding-left: 0;">
                         <input type="text"
@@ -110,6 +110,9 @@ angular.module 'app', ['builder', 'builder.components', 'validator.rules']
     # formObjectId: default value
     $scope.defaultValue[textbox.id] = 'default value'
     $scope.defaultValue[checkbox.id] = [yes, yes, no]
+
+    $scope.cleanComponent = () ->
+        $builder.cleanComponent('default')
 
     $scope.submit = ->
         $validator.validate $scope, 'default'

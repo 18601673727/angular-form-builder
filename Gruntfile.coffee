@@ -1,6 +1,6 @@
 module.exports = (grunt) ->
     grunt.config.init
-        compass:
+        sass:
             example:
                 options:
                     sassDir: 'example'
@@ -30,9 +30,9 @@ module.exports = (grunt) ->
                     'dist/angular-form-builder-components.min.js': 'dist/angular-form-builder-components.js'
 
         watch:
-            compass:
+            sass:
                 files: ['example/*.scss', 'src/*.scss']
-                tasks: ['compass']
+                tasks: ['sass']
                 options:
                     spawn: no
             coffee:
@@ -59,13 +59,13 @@ module.exports = (grunt) ->
     # register task
     # -----------------------------------
     grunt.registerTask 'dev', [
-        'compass'
+        'sass'
         'coffee'
         'connect'
         'watch'
     ]
     grunt.registerTask 'build', [
-        'compass'
+        'sass'
         'coffee'
         'uglify'
     ]
@@ -74,7 +74,7 @@ module.exports = (grunt) ->
     # -----------------------------------
     # Plugins
     # -----------------------------------
-    grunt.loadNpmTasks 'grunt-contrib-compass'
+    grunt.loadNpmTasks 'grunt-contrib-sass'
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-watch'
     grunt.loadNpmTasks 'grunt-contrib-connect'

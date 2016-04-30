@@ -89,8 +89,7 @@ angular.module 'builder.directive', [
                     $(element).find('.empty').remove()
                     # also insert a form object
                     if draggable.mode is 'mirror'
-                        $builder.insertFormObject scope.formName, $(element).find('.empty').index('.fb-form-object-editable'),
-                            component: draggable.object.componentName
+                        $builder.addFormObject scope.formName, component: draggable.object.componentName
 
                     return
 
@@ -274,14 +273,21 @@ angular.module 'builder.directive', [
     restrict: 'A'
     template:
         """
-        <ul ng-if="groups.length > 1" class="nav nav-tabs nav-outline">
-            <li ng-repeat="group in groups" ng-class="{active:activeGroup==group}">
-                <a href='#' ng-click="selectGroup($event, group)">{{group}}</a>
-            </li>
-        </ul>
-        <div class="fb-components" role='form'>
-            <div class='fb-component' ng-repeat="component in components"
-                fb-component="component"></div>
+        <div ng-if="groups.length" class="panel-group" id="accordion">
+          <div ng-repeat="group in groups track by $index" class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a ng-click="selectGroup($event, group)" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$index}}">
+                  {{group}}
+                </a>
+              </h4>
+            </div>
+            <div id="collapse{{$index}}" class="fb-components panel-collapse collapse" ng-class="{in: !$index}">
+              <div class="panel-body">
+                <div class='fb-component' ng-repeat="component in components" fb-component="component"></div>
+              </div>
+            </div>
+          </div>
         </div>
         """
     controller: 'fbComponentsController'

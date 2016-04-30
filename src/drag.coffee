@@ -144,7 +144,7 @@ angular.module 'builder.drag', []
 
             $clone = $element.clone()
             result.element = $clone[0]
-            $clone.addClass "fb-draggable form-horizontal prepare-dragging"
+            $clone.addClass "fb-draggable prepare-dragging"
             @hooks.move.drag = (e, defer) =>
                 if $clone.hasClass 'prepare-dragging'
                     $clone.css
@@ -283,6 +283,7 @@ angular.module 'builder.drag', []
             out: The custom mouse out callback. (e, draggable)->
         ###
         result = []
+        @data.droppables = {}
         for element in $element
             droppable = @dropMode $(element), options
             result.push droppable

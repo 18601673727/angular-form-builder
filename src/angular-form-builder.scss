@@ -10,13 +10,11 @@
 
     cursor: move;
     input { cursor: move; }
-    label { cursor: move; }
+    label { cursor: pointer; }
     select { cursor: move; }
     textarea { cursor: move; }
 }
 .fb-components {
-    padding: 10px 0;
-    border: 1px solid #3B99FC;
     border-top: none;
 }
 .nav-outline {
@@ -63,6 +61,7 @@
 
     &:hover {
       .fb-toolbox a {
+        cursor: pointer;
         color: #3B99FC;
       }
     }
